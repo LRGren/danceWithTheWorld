@@ -1,93 +1,90 @@
-using System;
 using UnityEngine;
 using UnityEngine.Splines;
-using System.Collections;
 
 public class SplineMover : MonoBehaviour
 {
-    [Header("Spline Settings")]
-    public string splineName;
-    public SplineContainer spline;
-    public float duration = 3f;
+    public string MoverName;
     
-    public bool doneMovement = false;
+    [Header("References")]
+    [SerializeField] private SplineContainer splineContainer;
+    [SerializeField] private Transform movingObject;
     
-    private Coroutine moveCoroutine;
-
-    private void Update()
+    [Header("Settings")]
+    [SerializeField] private float duration = 5f;
+    
+    private bool hasTriggered = false;
+    private bool isMoving = false;
+    private float currentTime = 0f;
+    
+    void Start()
     {
-        
+        // 自动查找引用
+        if (splineContainer == null)
+            splineContainer = GetComponentInChildren<SplineContainer>();
+            
+        if (movingObject == null)
+            movingObject = transform;
     }
-
-    /// <summary>
-    /// 触发移动 - 只需调用一次
-    /// </summary>
-    public void Move()
+    
+    void Update()
     {
-        if(doneMovement)
-            return;
-        
-        if (spline == null)
+        // 更新移动
+        if (isMoving)
         {
-            Debug.LogError("Spline未分配！");
+            UpdateMovement();
+        }
+    }
+    
+    /// <summary>
+    /// 外部调用：开始移动
+    /// </summary>
+    public void StartMovement()
+    {
+        if (splineContainer == null)
+        {
+            Debug.LogWarning("SplineContainer未设置！");
             return;
         }
         
-        if (moveCoroutine != null)
-            StopCoroutine(moveCoroutine);
-
-        doneMovement = true;
-        moveCoroutine = StartCoroutine(MoveRoutine());
+        if (hasTriggered || isMoving) return;
+        
+        hasTriggered = true;
+        isMoving = true;
+        currentTime = 0f;
     }
-
+    
     /// <summary>
-    /// 触发移动并指定Spline
+    /// 外部调用：重置移动状态（允许重新触发）
     /// </summary>
-    public void Move(SplineContainer targetSpline, float moveDuration = -1)
+    public void ResetMovement()
     {
-        if (targetSpline != null) 
-            spline = targetSpline;
-        
-        if (moveDuration > 0) 
-            duration = moveDuration;
-
-        Move();
+        hasTriggered = false;
+        isMoving = false;
+        currentTime = 0f;
     }
-
-    private IEnumerator MoveRoutine()
+    
+    private void UpdateMovement()
     {
-        float time = 0f;
+        currentTime += Time.deltaTime;
+        float normalizedTime = currentTime / duration;
         
-        while (time < duration)
+        if (normalizedTime >= 1f)
         {
-            time += Time.deltaTime;
-            float t = time / duration;
-            
-            // 获取Spline上的位置
-            Vector3 position = spline.EvaluatePosition(t);
-            position = spline.transform.TransformPoint(position);
-            
-            // 移动物体
-            transform.position = position;
-            
-            yield return null;
+            // 移动完成
+            isMoving = false;
+            normalizedTime = 1f;
         }
         
-        // 确保到达终点
-        Vector3 endPosition = spline.EvaluatePosition(1f);
-        endPosition = spline.transform.TransformPoint(endPosition);
-        transform.position = endPosition;
-    }
-
-    /// <summary>
-    /// 停止移动
-    /// </summary>
-    public void Stop()
-    {
-        if (moveCoroutine != null)
+        // 沿Spline移动
+        Vector3 position = splineContainer.EvaluatePosition(normalizedTime);
+        Vector3 tangent = splineContainer.EvaluateTangent(normalizedTime);
+        
+        movingObject.position = position;
+        
+        // 设置朝向
+        if (tangent != Vector3.zero)
         {
-            StopCoroutine(moveCoroutine);
-            moveCoroutine = null;
+            movingObject.rotation = Quaternion.LookRotation(tangent.normalized);
         }
     }
 }

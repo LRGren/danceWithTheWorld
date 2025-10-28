@@ -299,12 +299,12 @@ public class PlayerSkillInputManager : MonoBehaviour
 
                 foreach (var spline in splineMovers)
                 {
-                    //print(spline.splineName + " " + currentSkill);
-                    //print(spline.splineName == currentSkill);
+                    print(spline.MoverName + " " + currentSkill);
+                    print(spline.MoverName == currentSkill);
                         
-                    if (spline.splineName == currentSkill)
+                    if (spline.MoverName == currentSkill)
                     {
-                        spline.Move();
+                        spline.StartMovement();
                     }
                 }
                     
