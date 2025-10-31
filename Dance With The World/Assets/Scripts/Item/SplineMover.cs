@@ -4,19 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
 
-public class SplineMover : MonoBehaviour
+public class SplineMover : SkillItem
 {
-    public string MoverName;
-    
     [Header("References")]
     [SerializeField] private SplineContainer splineContainer;
     [SerializeField] private Transform movingObject;
-    [SerializeField] private bool canMove = false;
+    [SerializeField] protected bool canMove = false;
     
     [Header("Settings")]
     [SerializeField] private float duration = 5f;
     
-    private bool hasTriggered = false;
     private bool isMoving = false;
     private float currentTime = 0f;
 
@@ -30,18 +27,26 @@ public class SplineMover : MonoBehaviour
             movingObject = transform;
     }
     
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+        
         // 更新移动
         if (isMoving)
         {
             UpdateMovement();
         }
     }
-    
-    /// <summary>
-    /// 外部调用：开始移动
-    /// </summary>
+
+    protected override void SkillOn()
+    {
+        base.SkillOn();
+        
+        print("go");
+        
+        StartMovement();
+    }
+
     public void StartMovement()
     {
         if(!canMove)
@@ -60,9 +65,6 @@ public class SplineMover : MonoBehaviour
         currentTime = 0f;
     }
     
-    /// <summary>
-    /// 外部调用：重置移动状态（允许重新触发）
-    /// </summary>
     public void ResetMovement()
     {
         hasTriggered = false;

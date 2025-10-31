@@ -14,7 +14,7 @@ public class PlayerTextManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other.name);
+        //print(other.name);
         
         TextTrigger textTrigger = other.GetComponent<TextTrigger>();
         if (textTrigger != null)

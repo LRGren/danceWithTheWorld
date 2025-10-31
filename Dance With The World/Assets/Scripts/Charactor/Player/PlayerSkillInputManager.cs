@@ -150,8 +150,8 @@ public class PlayerSkillInputManager : MonoBehaviour
     private SerializableDictionary CanUpgrade = new SerializableDictionary();
     private string currentSkill = "null";
     
-    [Header("Item Moving")]
-    private SplineMover[] splineMovers;
+    [Header("Item")]
+    private SkillItem[] items;
     
     public void Awake()
     {
@@ -183,12 +183,6 @@ public class PlayerSkillInputManager : MonoBehaviour
         
         if(!player)
             player = FindObjectOfType<PlayerManager>();
-
-        if (FindObjectOfType<SplineMover>())
-        {
-            splineMovers = FindObjectsOfType<SplineMover>();
-            //print(splineMovers.Length);
-        }
         
         DontDestroyOnLoad(this);
     }
@@ -196,7 +190,6 @@ public class PlayerSkillInputManager : MonoBehaviour
     private void Update()
     {
         FINAL_SKILL_NAME = currentSkill;
-        
     }
 
     int delayTime;
@@ -296,15 +289,22 @@ public class PlayerSkillInputManager : MonoBehaviour
             {
                 //触发技能
                 //print("Trigger Skill" + " " + FINAL_SKILL_NAME);
-
-                foreach (var spline in splineMovers)
+        
+                if (FindObjectOfType<SkillItem>())
                 {
-                    print(spline.MoverName + " " + currentSkill);
-                    print(spline.MoverName == currentSkill);
+                    items = FindObjectsOfType<SkillItem>();
+                    //print(splineMovers.Length);
+                }
+                
+
+                foreach (var item in items)
+                {
+                    print(item.MoverName + " " + currentSkill);
+                    print(item.MoverName == currentSkill);
                         
-                    if (spline.MoverName == currentSkill)
+                    if (item.MoverName == currentSkill)
                     {
-                        spline.StartMovement();
+                        item.trigger = true;
                     }
                 }
                     

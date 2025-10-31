@@ -108,7 +108,7 @@ MonoBehaviour:
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 264
   maxJumps: 1
   airControl: 0.5
   FallTime: 0
