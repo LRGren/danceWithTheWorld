@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -85,7 +86,7 @@ public class SelfBrokener : SkillItem
             Gizmos.DrawRay(currentCenter, dir);
         }
     }
-    
+
     protected override void Update()
     {
         base.Update();
