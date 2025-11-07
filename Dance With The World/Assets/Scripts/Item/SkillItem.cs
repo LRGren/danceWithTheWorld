@@ -6,8 +6,9 @@ using UnityEngine;
 public class SkillItem : MonoBehaviour
 {
     public string MoverName;
+    public GameObject model;
     public bool trigger = false;
-    [SerializeField] protected bool hasTriggered = false;
+    public bool hasTriggered = false;
 
     protected virtual void Update()
     {

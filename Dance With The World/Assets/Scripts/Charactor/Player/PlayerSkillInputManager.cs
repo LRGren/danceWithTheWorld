@@ -290,7 +290,7 @@ public class PlayerSkillInputManager : MonoBehaviour
                 //触发技能
                 //print("Trigger Skill" + " " + FINAL_SKILL_NAME);
         
-                if (FindObjectOfType<SkillItem>())
+                /*if (FindObjectOfType<SkillItem>())
                 {
                     items = FindObjectsOfType<SkillItem>();
                     //print(splineMovers.Length);
@@ -306,6 +306,17 @@ public class PlayerSkillInputManager : MonoBehaviour
                     {
                         item.trigger = true;
                     }
+                }*/
+
+                if (PlayerRaycastManager.instance.currentTarget != null)
+                {
+                    SkillItem item = PlayerRaycastManager.instance.currentTarget.transform.root
+                        .GetComponentInChildren<SkillItem>();
+                    
+                    print(item.MoverName + " " + currentSkill);
+                    
+                    if (item.MoverName == currentSkill)
+                        item.trigger = true;
                 }
                     
                 skillTrigger = false;

@@ -56,7 +56,7 @@ MonoBehaviour:
   cameraCollisionRadius: 0.2
   collideWithLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   leftAndRightLookAngle: 0
   upAndDownLookAngle: 0
 --- !u!1 &2109147681226072145
@@ -86,13 +86,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2109147681226072145}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.109618, y: -2.5137053, z: -13.516139}
+  m_LocalRotation: {x: 0.08758511, y: -0, z: -0, w: 0.99615705}
+  m_LocalPosition: {x: 0, y: 1.65, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2430234424285564829}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 10.049, y: 0, z: 0}
 --- !u!20 &8359681287215380527
 Camera:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ Transform:
   m_GameObject: {fileID: 8924825074973863659}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

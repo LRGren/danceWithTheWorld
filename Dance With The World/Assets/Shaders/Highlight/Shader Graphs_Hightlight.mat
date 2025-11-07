@@ -39,7 +39,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 0.3
-    - _Normal: 0.000001
+    - _Normal: 0.0001
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:

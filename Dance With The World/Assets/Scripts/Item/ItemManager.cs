@@ -1,18 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject model;
+    public SkillItem skillItem;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (skillItem == null)
+        {
+            skillItem = transform.parent.GetComponentInChildren<SkillItem>();
+        }
+
+        if (skillItem)
+        {
+            if (skillItem.hasTriggered)
+            {
+                model.SetActive(false);
+            }
+        }
     }
 }

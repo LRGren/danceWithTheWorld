@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Project.Scripts.Fractures;
 using UnityEngine;
 
 public class SelfBrokener : SkillItem
@@ -95,6 +96,15 @@ public class SelfBrokener : SkillItem
         {
             StartCoroutine(ApplyRadialForcesSequence());
         }*/
+
+        if (model == null)
+        {
+            transform.parent.GetChild(0).gameObject.SetActive(true);
+            model = transform.parent.GetComponentInChildren<ItemManager>().model;
+            transform.parent.GetComponentInChildren<FractureThis>().enabled = false;
+            MeshCollider mesh = model.AddComponent<MeshCollider>();
+            mesh.convex = true;
+        }
         
     }
 
@@ -103,6 +113,7 @@ public class SelfBrokener : SkillItem
         if(hasTriggered)return;
         
         base.SkillOn();
+        model.SetActive(false);
         StartCoroutine(ApplyRadialForcesSequence());
     }
 }
