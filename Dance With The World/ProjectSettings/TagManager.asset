@@ -16,12 +16,12 @@ TagManager:
   - FrozenChunks
   - Player
   - Partal
-  - Actor
-  - HighlightedActor
-  - 
-  - 
-  - 
-  - 
+  - ActorRed
+  - HighlightedActorRed
+  - ActorBlue
+  - HighlightedActorBlue
+  - ActorDark
+  - HighlightedActorDark
   - 
   - 
   - 

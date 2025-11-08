@@ -38,4 +38,11 @@ public class GameManager : MonoBehaviour
         playerManager.transform.position = Vector3.zero;
         playerManager.characterController.enabled = true;
     }
+
+    public void TP(Vector3 targetPosition)
+    {
+        playerManager.characterController.enabled = false;
+        playerManager.transform.position = targetPosition;
+        playerManager.characterController.enabled = true;
+    }
 }

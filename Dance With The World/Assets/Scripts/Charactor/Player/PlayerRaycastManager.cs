@@ -11,8 +11,10 @@ public class PlayerRaycastManager : MonoBehaviour
     public GameObject currentTarget;
     public GameObject lastTarget;
     
-    private LayerMask actorLayer;
+    public LayerMask actorLayer1, actorLayer2, actorLayer3;
     private LayerMask highlightedLayer;
+
+    private LayerMask lastLayer;
 
     private void Awake()
     {
@@ -25,8 +27,9 @@ public class PlayerRaycastManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         
-        actorLayer = LayerMask.NameToLayer("Actor");
-        highlightedLayer = LayerMask.NameToLayer("HighlightedActor");
+        actorLayer1 = LayerMask.NameToLayer("ActorRed");
+        actorLayer2 = LayerMask.NameToLayer("ActorBlue");
+        actorLayer3 = LayerMask.NameToLayer("ActorDark");
     }
 
     private void Start()
@@ -44,7 +47,9 @@ public class PlayerRaycastManager : MonoBehaviour
         {
             currentTarget = null;
             if (lastTarget)
-                lastTarget.layer = actorLayer;
+            {
+                lastTarget.layer = lastLayer;
+            }
         }
     }
 
@@ -52,26 +57,41 @@ public class PlayerRaycastManager : MonoBehaviour
     {
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(new Vector3(Screen.width, Screen.height) * .5f),
-                out hit, interactionRange, LayerMask.GetMask("Actor","HighlightedActor")))
+                out hit, interactionRange, LayerMask.GetMask("ActorRed","ActorBlue","ActorDark","HighlightedActorRed","HighlightedActorBlue","HighlightedActorDark")))
         {
             currentTarget = hit.collider.gameObject;
             if (lastTarget != null)
             {
-                lastTarget.layer = actorLayer;
+                lastTarget.layer = lastLayer;
                 lastTarget = null;
             }
 
             if (currentTarget != null)
             {
-                currentTarget.layer = highlightedLayer;
+                lastLayer = currentTarget.layer;
                 lastTarget = currentTarget;
+
+                if (currentTarget.layer == actorLayer1)
+                {
+                    currentTarget.layer = LayerMask.NameToLayer("HighlightedActorRed");
+                }
+                else if (currentTarget.layer == actorLayer2)
+                {
+                    currentTarget.layer = LayerMask.NameToLayer("HighlightedActorBlue");
+                }
+                else if (currentTarget.layer == actorLayer3)
+                {
+                    currentTarget.layer = LayerMask.NameToLayer("HighlightedActorDark");
+                }
             }
         }
         else
         {
             currentTarget = null;
             if (lastTarget)
-                lastTarget.layer = actorLayer;
+            {
+                lastTarget.layer = lastLayer;
+            }
         }
     }
 }

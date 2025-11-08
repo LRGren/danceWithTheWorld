@@ -5,15 +5,30 @@ using UnityEngine;
 
 public class Transition : MonoBehaviour
 {
+    public int type = 1;
     public int targetSceneIndex;
+    public Transform targetPosition;
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (type == 1)
         {
-            if (Input.GetKey(KeyCode.E))
+            if (other.CompareTag("Player"))
             {
-                GameManager.instance.LoadScene(targetSceneIndex);
+                if (Input.GetKey(KeyCode.E))
+                {
+                    GameManager.instance.LoadScene(targetSceneIndex);
+                }
             }
-        }   
+        }
+        else if (type == 2)
+        {
+            if (other.CompareTag("Player"))
+            {
+                if (Input.GetKey(KeyCode.E))
+                {
+                    GameManager.instance.TP(targetPosition.position);
+                }
+            }
+        }
     }
 }
