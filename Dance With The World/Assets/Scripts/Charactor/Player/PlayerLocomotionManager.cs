@@ -33,6 +33,7 @@ public class PlayerLocomotionManager : CharactorLocomotionManager
     [Header("Jump Settings")]
     public int maxJumps = 1;
     public float airControl = 0.5f;
+    public AudioDefination fx;
     
     private int jumpsRemaining;
     private Vector3 velocity;
@@ -131,6 +132,7 @@ public class PlayerLocomotionManager : CharactorLocomotionManager
         if (Input.GetButtonDown("Jump") && jumpsRemaining > 0 &&
             !player.playerAnimationManager.CheckState("land", "Locomotion")) 
         {
+            fx.PlayAudioClip(0);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             player.playerAnimationManager.SetAnimTrigger("jump");
             player.playerAnimationManager.ResetAnimTrigger("ground");

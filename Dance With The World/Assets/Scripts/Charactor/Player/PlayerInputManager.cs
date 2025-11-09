@@ -36,6 +36,9 @@ public class PlayerInputManager : MonoBehaviour
 
     private void Update()
     {
+        if(GameManager.instance.isUI)
+            return;
+        
         HandlePlayerMovementInput();
         HandleCameraMovementInput();
     }

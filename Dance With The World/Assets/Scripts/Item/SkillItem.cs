@@ -9,6 +9,12 @@ public class SkillItem : MonoBehaviour
     public GameObject model;
     public bool trigger = false;
     public bool hasTriggered = false;
+    public AudioDefination fx;
+
+    private void Awake()
+    {
+        fx = GetComponent<AudioDefination>();
+    }
 
     protected virtual void Update()
     {

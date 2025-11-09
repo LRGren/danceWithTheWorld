@@ -10156,6 +10156,7 @@ GameObject:
   - component: {fileID: 7753910997027233213}
   - component: {fileID: 683156467325964794}
   - component: {fileID: 3509924453137810031}
+  - component: {fileID: 8412642752390180814}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -10196,6 +10197,7 @@ MonoBehaviour:
   model: {fileID: 0}
   trigger: 0
   hasTriggered: 0
+  fx: {fileID: 8412642752390180814}
   particle: {fileID: 1733450638531655485}
   obj: {fileID: 3349623505580231777}
 --- !u!114 &3509924453137810031
@@ -10212,6 +10214,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 2403165835287748504}
   skillItem: {fileID: 0}
+--- !u!114 &8412642752390180814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3349623505580231777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4f2848e4f84c34a8a3ff1d8a16b7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAudioEvent: {fileID: 11400000, guid: e8d55b2a6439610498441ff5a768250c, type: 2}
+  audioClip: {fileID: 8300000, guid: 7bef0064f8567430cac22499c6b93d4f, type: 3}
+  audioClips: []
+  playOnEnable: 0
 --- !u!1 &3620323090011058568
 GameObject:
   m_ObjectHideFlags: 0

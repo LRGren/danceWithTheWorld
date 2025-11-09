@@ -62,6 +62,9 @@ public class TextManager : MonoBehaviour
 
         if (current != null)
         {
+            if(textTriggers[0]==null)
+                textTriggers.RemoveAt(0);
+            
             if (!current.haveDone && !conditionedTextObject.activeSelf && !flashTextObject.activeSelf) 
             {
                 if (current.type == 0)

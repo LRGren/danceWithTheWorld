@@ -152,6 +152,10 @@ public class PlayerSkillInputManager : MonoBehaviour
     
     [Header("Item")]
     private SkillItem[] items;
+
+    [Header("Dance Sound")]
+    public AudioDefination fx;
+    public AudioDefination bgm;
     
     public void Awake()
     {
@@ -225,6 +229,8 @@ public class PlayerSkillInputManager : MonoBehaviour
                 delayTime = 300;
                 skillTrigger = true;
                 current = move;
+                fx.PlayAudioClip();
+
             }
         }
     }
@@ -256,6 +262,9 @@ public class PlayerSkillInputManager : MonoBehaviour
     bool skillTrigger = false;
     public void LateUpdate()
     {
+        if(GameManager.instance.isUI)
+            return;
+        
         if (!enabledSkillInput)
         {
             CurrentStage = 0;
@@ -307,16 +316,46 @@ public class PlayerSkillInputManager : MonoBehaviour
                         item.trigger = true;
                     }
                 }*/
+                switch (currentSkill)
+                {
+                    case "spider_shake_punch":
+                        bgm.PlayAudioClip(0);
+                        break;
+                    case "hawaii_shake":
+                        bgm.PlayAudioClip(1);
+                        break;
+                    case "subject_three":
+                        bgm.PlayAudioClip(2);
+                        break;
+                    case "thomas_spin":
+                        bgm.PlayAudioClip(3);
+                        break;
+                    case "sukarno":
+                        bgm.PlayAudioClip(4);
+                        break;
+                    case "rotate":
+                        bgm.PlayAudioClip(5);
+                        break;
+                    case "jumping":
+                        bgm.PlayAudioClip(6);
+                        break;
+                    default:
+                        break;
+                }
+                
 
                 if (PlayerRaycastManager.instance.currentTarget != null)
                 {
                     SkillItem item = PlayerRaycastManager.instance.currentTarget.transform.root
                         .GetComponentInChildren<SkillItem>();
                     
-                    print(item.MoverName + " " + currentSkill);
-                    
+                    //(item.MoverName + " " + currentSkill);
+
                     if (item.MoverName == currentSkill)
+                    {
                         item.trigger = true;
+                        item.fx.PlayAudioClip();
+                    }
                 }
                     
                 skillTrigger = false;

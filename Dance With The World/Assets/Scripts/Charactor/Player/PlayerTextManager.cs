@@ -19,7 +19,8 @@ public class PlayerTextManager : MonoBehaviour
         TextTrigger textTrigger = other.GetComponent<TextTrigger>();
         if (textTrigger != null)
         {
-            TextManager.instance.textTriggers.Add(textTrigger);
+            if(!textTrigger.haveDone)
+                TextManager.instance.textTriggers.Add(textTrigger);
         }
     }
     

@@ -6,6 +6,8 @@ using TMPro;
 
 public class PlayerManager : CharacterManager
 {
+    public static PlayerManager instance;
+    
     [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
     [HideInInspector] public PlayerInputManager playerInputManager;
     [HideInInspector] public PlayerAnimationManager playerAnimationManager;
@@ -20,6 +22,11 @@ public class PlayerManager : CharacterManager
     
     protected override void Awake()
     {
+        if(instance==null)
+            instance = this;
+        else
+            Destroy(this.gameObject);
+        
         base.Awake();
         
         playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
@@ -52,6 +59,9 @@ public class PlayerManager : CharacterManager
     
     private void Update()
     {
+        if(GameManager.instance.isUI)
+            return;
+        
         UpdateGameManager();
         
         ChangeControlMode();

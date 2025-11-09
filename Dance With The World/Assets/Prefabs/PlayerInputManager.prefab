@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1899660343907749554}
   - component: {fileID: 6633763162383398591}
   - component: {fileID: 924996410738987363}
+  - component: {fileID: 1564361815076010959}
+  - component: {fileID: 149656177277272848}
   m_Layer: 0
   m_Name: PlayerInputManager
   m_TagString: Untagged
@@ -162,3 +164,44 @@ MonoBehaviour:
     - key: hawaii_shake
       value:
       - subject_three
+  fx: {fileID: 1564361815076010959}
+  bgm: {fileID: 0}
+--- !u!114 &1564361815076010959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844986638708419808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4f2848e4f84c34a8a3ff1d8a16b7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAudioEvent: {fileID: 11400000, guid: a2eb519a53114ad4eabff7acf8dcd197, type: 2}
+  audioClip: {fileID: 8300000, guid: 79e6baad2fd414b82a6d49ce1568d2e5, type: 3}
+  audioClips: []
+  playOnEnable: 0
+--- !u!114 &149656177277272848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844986638708419808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4f2848e4f84c34a8a3ff1d8a16b7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAudioEvent: {fileID: 11400000, guid: d32ce26a5006cb04f82601787b078709, type: 2}
+  audioClip: {fileID: 0}
+  audioClips:
+  - {fileID: 8300000, guid: b90b002a8cd137243a4b5e955f3b220f, type: 3}
+  - {fileID: 8300000, guid: ac81e521cc4fffd4cb560d4ddc70d306, type: 3}
+  - {fileID: 8300000, guid: 6b99e4ca54feb1c499bd45b2c95dfde1, type: 3}
+  - {fileID: 8300000, guid: 845f28f9ae11b4b4181d3f627c5c4a1f, type: 3}
+  - {fileID: 8300000, guid: fecae2a77cef6694caa4dd7624c09ef9, type: 3}
+  - {fileID: 8300000, guid: 390e7a99cb0560f49a1dd255b0e3b819, type: 3}
+  - {fileID: 8300000, guid: 10ea0c6ecdfbe594d85161c221bce875, type: 3}
+  playOnEnable: 0

@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 1796115444038691991}
   - component: {fileID: 4415451320963835889}
   - component: {fileID: 5391424272167965134}
+  - component: {fileID: 4047039857085068414}
   m_Layer: 3
   m_Name: Model
   m_TagString: Untagged
@@ -156,6 +157,7 @@ MonoBehaviour:
   model: {fileID: 7315589621042157379}
   trigger: 0
   hasTriggered: 0
+  fx: {fileID: 0}
   splineContainer: {fileID: 7323830504166497158}
   movingObject: {fileID: 1796115444038691991}
   canMove: 1
@@ -174,6 +176,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 7323599477330939547}
   skillItem: {fileID: 0}
+--- !u!114 &4047039857085068414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7315589621042157379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4f2848e4f84c34a8a3ff1d8a16b7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAudioEvent: {fileID: 11400000, guid: e8d55b2a6439610498441ff5a768250c, type: 2}
+  audioClip: {fileID: 8300000, guid: cf6c0e7fbef9449c98a0cdb5ea0c4d9f, type: 3}
+  audioClips: []
+  playOnEnable: 0
 --- !u!1 &7323599477330939547
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +204,7 @@ GameObject:
   - component: {fileID: 7248365364195917626}
   - component: {fileID: 7198295164693115881}
   - component: {fileID: 3864308180375890641}
-  m_Layer: 15
+  m_Layer: 13
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

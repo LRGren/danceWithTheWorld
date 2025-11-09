@@ -1,18 +1,20 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UILetterDisplayManager : MonoBehaviour
 {
-    private UILetterDisplayManager instance;
+    public static UILetterDisplayManager instance;
     
     [Header("开关设置")]
     public KeyCode toggleKey = KeyCode.P;
     public Text statusText;
     private bool isActive = false;
 
-    [Header("显示位置设置")]
+    [Header("显示位置设置")] 
+    public GameObject s;
     public DisplayPosition displayPosition = DisplayPosition.Center;
     public RectTransform displayRoot;
     public Vector2 customPosition = Vector2.zero;
@@ -65,7 +67,7 @@ public class UILetterDisplayManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 
@@ -105,8 +107,12 @@ public class UILetterDisplayManager : MonoBehaviour
 
     void Update()
     {
+        if(GameManager.instance.isUI)
+            return;
+        
         if (Input.GetKeyDown(toggleKey))
         {
+            s.gameObject.SetActive(!s.gameObject.activeSelf);
             ToggleSystem();
         }
 
