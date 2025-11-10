@@ -34,7 +34,7 @@ public class PlayerAnimationManager : MonoBehaviour
         {
             case "upper_hand_R":
                 if (CheckStateWithTag("final", "Dance_W"))
-                    PlayAnimationBack();
+                    ResetAnimation();
 
                 animator.Play("New State", 4); //Dance_W_L
                 animator.Play("New State", 5); //Dance_W_L
@@ -45,7 +45,7 @@ public class PlayerAnimationManager : MonoBehaviour
                 break;
             case "upper_hand_L":
                 if (CheckStateWithTag("final", "Dance_W"))
-                    PlayAnimationBack();
+                    ResetAnimation();
 
                 animator.Play("New State", 4); //Dance_W_L
                 animator.Play("New State", 5); //Dance_W_L
@@ -56,7 +56,7 @@ public class PlayerAnimationManager : MonoBehaviour
                 break;
             case "upper_hand":
                 if (CheckStateWithTag("final", "Dance_W"))
-                    PlayAnimationBack();
+                    ResetAnimation();
 
                 animator.Play("New State", 4); //Dance_W_L
                 animator.Play("New State", 5); //Dance_W_L
@@ -68,7 +68,7 @@ public class PlayerAnimationManager : MonoBehaviour
                 break;
             case "squat_down":
                 if (CheckStateWithTag("final", "Dance_W"))
-                    PlayAnimationBack();
+                    ResetAnimation();
 
                 animator.Play("New State", 7); //Dance_W
 
@@ -80,7 +80,7 @@ public class PlayerAnimationManager : MonoBehaviour
                 break;
             case "upper_hand_and_leg_R":
                 if (CheckStateWithTag("final", "Dance_W"))
-                    PlayAnimationBack();
+                    ResetAnimation();
 
                 animator.Play("New State", 7); //Dance_W
 
@@ -92,7 +92,7 @@ public class PlayerAnimationManager : MonoBehaviour
                 break;
             case "upper_hand_and_leg_L":
                 if (CheckStateWithTag("final", "Dance_W"))
-                    PlayAnimationBack();
+                    ResetAnimation();
 
                 animator.Play("New State", 7); //Dance_W
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TextManager : MonoBehaviour
 {
@@ -15,7 +16,10 @@ public class TextManager : MonoBehaviour
     public bool appearFlashTrigger = false;
     public bool appearConditionedTrigger = false;
 
-    [Header("UI References")] 
+    [Header("UI References")]
+    public GameObject mainUI;
+    public GameObject hisObj;
+    public Text History;
     public GameObject flashTextObject;
     public Text flashText;
     public float flashTime = 0;
@@ -119,7 +123,9 @@ public class TextManager : MonoBehaviour
             return;
         
         flashTextObject.SetActive(true);
-        
+
+
+        History.text += flashTextInfo;
         flashText.text = flashTextInfo;
 
         flashTime = setFlashTime;
@@ -133,6 +139,8 @@ public class TextManager : MonoBehaviour
             return;
         
         conditionedTextObject.SetActive(true);
+        
+        History.text += conditionedTextInfo;
         conditionedText.text = conditionedTextInfo;
 
         appearConditionedTrigger = false;
@@ -145,6 +153,27 @@ public class TextManager : MonoBehaviour
         if (flashTime < 0)
         {
             flashTextObject.SetActive(false);
+        }
+    }
+    
+    void OnEnable()
+    {
+        // 订阅场景加载事件
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        // 取消订阅场景加载事件
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // 场景加载完成时的回调函数
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.buildIndex>0){
+            hisObj.SetActive(true);
+            History.text = "  ";
         }
     }
 }

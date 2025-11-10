@@ -49,6 +49,8 @@ public class PlayerManager : CharacterManager
     {
         PlayerSkillInputManager.instance.enabledSkillInput = false;
         
+        playerAnimationManager.ResetAnimation();
+        
         playerAnimationManager.SetAnimFloat("velocity",playerInputManager.moveAmount);
     }
 

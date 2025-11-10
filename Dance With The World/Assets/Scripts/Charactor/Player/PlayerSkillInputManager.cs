@@ -357,7 +357,7 @@ public class PlayerSkillInputManager : MonoBehaviour
                         item.fx.PlayAudioClip();
                     }
                 }
-                    
+                
                 skillTrigger = false;
             }
         }

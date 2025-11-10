@@ -48,9 +48,6 @@ public class PlayerCamera : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         cameraZPosition = cameraObject.transform.localPosition.z;
-        
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     public void HandleAllCameraActions()
